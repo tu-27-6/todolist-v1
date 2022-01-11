@@ -3,13 +3,13 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
-//fix scope
-var items = [];
-var day;
+//save to do tasks
+let items = [];
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
+//use css, image, js file in expressjs
 app.use(express.static("public"));
 
 app.get("/", function (req, res) {
@@ -18,8 +18,9 @@ app.get("/", function (req, res) {
 
     //format day
     let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    day = today.toLocaleDateString("en-US", options);
+    let day = today.toLocaleDateString("en-US", options);
 
+    //render "list.ejs" to the browser
     res.render("list", { newDay: day , newItems: items});
 });
 
@@ -29,7 +30,7 @@ app.post("/", (req, res) => {
 
     items.push(item);
 
-    //redirect the user to a different URL
+    //redirect the user to a different URL, ex
     res.redirect("/");
 });
 

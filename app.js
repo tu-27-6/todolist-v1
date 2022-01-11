@@ -10,12 +10,14 @@ var day;
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 
+app.use(express.static("public"));
+
 app.get("/", function (req, res) {
-    var today = new Date();
-    var currentDay = today.getDay();
+    let today = new Date();
+    let currentDay = today.getDay();
 
     //format day
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     day = today.toLocaleDateString("en-US", options);
 
     res.render("list", { newDay: day , newItems: items});
@@ -23,7 +25,7 @@ app.get("/", function (req, res) {
 
 app.post("/", (req, res) => {
     //take data from input
-    var item = req.body.newItem;
+    let item = req.body.newItem;
 
     items.push(item);
 

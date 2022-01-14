@@ -13,14 +13,14 @@
 
     <div class="box-date">
         <h1>
-            <%= newDay %>
+            <%= listTitle %>
         </h1>
     </div>
 
     <div class="box">
         <ul>
             <!-- print list -->
-            <% for(var i=0; i < newItems.length; i++) { %>
+            <% for(let i=0; i < newItems.length; i++) { %>
                 <div class="item">
                     <input type="checkbox">
                     <p>
@@ -33,12 +33,12 @@
 
         <form class="item" action="/" method="post">
         <input type="text" name="newItem" autocomplete="off" autofocus="on">
-        <button type="submit" name="button">+</button>
+        <button type="submit" name="list" value="<%= listTitle %>">+</button>
 
     </form>
     </div>
 
-
+    <%- include("footer") -%>
     
 </body>
 

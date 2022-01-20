@@ -20,22 +20,26 @@
     <div class="box">
         <ul>
             <!-- print list -->
-            <% for(let i=0; i < newItems.length; i++) { %>
+           <% newItems.forEach((item) => { %>
+            <form action="/delete" method="post">
                 <div class="item">
-                    <input type="checkbox">
+                    <input type="checkbox" name="checkbox" value="<%= item._id %>" onChange="this.form.submit()">
                     <p>
-                        <%= newItems[i] %>
+                        <%= item.name %>
                     </p>
                 </div>
+            </form>
+                
+           <% }) %>
 
-                <% } %>
         </ul>
 
-        <form class="item" action="/" method="post">
+    <form class="item" action="/" method="post">
         <input type="text" name="newItem" autocomplete="off" autofocus="on">
         <button type="submit" name="list" value="<%= listTitle %>">+</button>
 
     </form>
+    
     </div>
 
     <%- include("footer") -%>

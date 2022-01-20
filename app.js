@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs")
 
 //connect to mongoose server
-mongoose.connect('mongodb://localhost:27017/todoListDB', { useNewUrlParser: true })
+mongoose.connect('mongodb+srv://vungoctu9981:Vungoctu27062001@cluster0.uo0f1.mongodb.net/todoListDB', { useNewUrlParser: true })
 
 //create schema
 const itemsSchema = {
@@ -22,18 +22,14 @@ const Item = mongoose.model('Item', itemsSchema)
 
 //create mongoose
 const item1 = new Item({
-    name: 'Welcome to your todolist'
-})
-
-const item2 = new Item({
     name: 'Hit + button to add new item'
 })
 
-const item3 = new Item({
+const item2= new Item({
     name: '<-- Hit this to delete an item'
 })
 
-const defaultItems = [item1, item2, item3]
+const defaultItems = [item1, item2]
 
 
 
